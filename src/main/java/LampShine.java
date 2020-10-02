@@ -19,7 +19,7 @@ public class LampShine {
                 }
             }
             if (allShine) {
-                index = position;
+                index = position + 1;
                 counts ++;
             }
         }
