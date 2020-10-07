@@ -298,6 +298,27 @@ public class Codility {
         }
     }
 
+    public int minAvgTwoSlice(int[] A) {
+        double min = Double.MAX_VALUE;
+        int index = 0;
+        int len = A.length;
+        int[] presum = new int[len + 1];
+        for (int i = 1; i < len + 1; i++) {
+            presum[i] = presum[i - 1] + A[i - 1];
+        }
+        for (int i = 1; i < len; i++) {
+            for (int j = i + 1; j <= len; j++) {
+                double avg = (double)(presum[j] - presum[i - 1]) / (j - i + 1);
+                if (avg < min) {
+                    min = avg;
+                    index = i - 1;
+                    System.out.println("i, j, avg = " + i + " " + j + " "  + avg);
+                }
+            }
+        }
+        return index;
+    }
+
     public static void main(String[] args) {
         Codility codility = new Codility();
         /*int result = codility.maxGap(1041);
@@ -333,9 +354,13 @@ public class Codility {
         int[] P = {2, 5, 0};
         int[] Q = {4, 5, 6};
         int[] res = codility.genomicRangeQuery("CAGCCTA", P, Q);
-        System.out.println(Arrays.toString(res)); */
+        System.out.println(Arrays.toString(res));
 
         String S = "{[()()]}";
-        System.out.println(codility.distinct(S));
+        System.out.println(codility.distinct(S));*/
+
+        int[] A = {4, 2, 2, 5, 1, 5, 8};
+        int minAvgIndex = codility.minAvgTwoSlice(A);
+        System.out.println(minAvgIndex);
     }
 }
