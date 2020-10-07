@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 public class Codility {
     public int leastUnoccuredInt(int[] A) {
@@ -319,6 +316,21 @@ public class Codility {
         return index;
     }
 
+    public int passingCars(int[] A) {
+        int count = 0;
+        int len = A.length;
+        int easts = 0;
+        for (int i = 0; i < len; i++) {
+            if (A[i] == 0) {
+                easts++;
+            } else {
+                count += easts;
+                if (count > 1000000000) return -1;
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         Codility codility = new Codility();
         /*int result = codility.maxGap(1041);
@@ -357,10 +369,14 @@ public class Codility {
         System.out.println(Arrays.toString(res));
 
         String S = "{[()()]}";
-        System.out.println(codility.distinct(S));*/
+        System.out.println(codility.distinct(S));
 
         int[] A = {4, 2, 2, 5, 1, 5, 8};
         int minAvgIndex = codility.minAvgTwoSlice(A);
-        System.out.println(minAvgIndex);
+        System.out.println(minAvgIndex); */
+
+        int[] passingCarsInput = {0, 1, 0, 1, 1};
+        int passingCars = codility.passingCars(passingCarsInput);
+        System.out.println(passingCars);
     }
 }
