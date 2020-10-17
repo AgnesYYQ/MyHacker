@@ -251,50 +251,6 @@ public class Codility {
         return res;
     }
 
-    private boolean pair(char x, char y) {
-        switch (x) {
-            case '{' :
-                if (y == '}') {
-                    return true;
-                } else {
-                    return false;
-                }
-            case '[' :
-                if (y == ']') {
-                    return true;
-                } else {
-                    return false;
-                }
-            case '(' :
-                if (y == ')') {
-                    return true;
-                } else {
-                    return false;
-                }
-            default:
-                return false;
-        }
-    }
-    public int distinct(String S) {
-        if (S == null) return 0;
-        int len = S.length();
-        if (len == 0) return 1;
-        if (len % 2 != 0) return 0;
-        char c0 = S.charAt(0);
-        char c1 = S.charAt(1);
-        char cLast = S.charAt(len - 1);
-
-        if (pair(c0, c1)) {
-            String sub = S.substring(2);
-            return distinct(sub);
-        } else if (pair(c0, cLast)) {
-            String sub = S.substring(1, len - 1);
-            return distinct(sub);
-        } else {
-            return 0;
-        }
-    }
-
     public int minAvgTwoSlice(int[] A) {
         double min = Double.MAX_VALUE;
         int index = 0;
