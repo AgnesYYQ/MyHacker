@@ -331,6 +331,14 @@ public class Codility {
         return count;
     }
 
+    public int distinct(int[] A) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int i : A) {
+            set.add(i);
+        }
+        return set.size();
+    }
+
     public static void main(String[] args) {
         Codility codility = new Codility();
         /*int result = codility.maxGap(1041);
